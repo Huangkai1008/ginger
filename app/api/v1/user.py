@@ -1,9 +1,9 @@
-from flask import Blueprint
-
-user = Blueprint('user', __name__)
+from app.libs.redprint import Redprint
 
 
-@user.route('/v1/user/get')
+api = Redprint('user')
+
+
+@api.route('/user/get')
 def get_user():
     return 'i am kevin'
-
