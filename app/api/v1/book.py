@@ -4,11 +4,11 @@ from app.libs.redprint import Redprint
 api = Redprint('book')
 
 
-@api.route('/book/get')
+@api.route('/get')
 def get_book():
     return 'get book'
 
 
-@api.route('/book/create')
+@api.route('/create')
 def create_book():
     return 'create book'
