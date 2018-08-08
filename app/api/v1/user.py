@@ -6,7 +6,7 @@ api = Redprint('user')
 
 @api.route('/get')
 def get_user():
-    return 'i am kevin'
+    return 'i am kevin huang'
 
 
 @api.route('/create')

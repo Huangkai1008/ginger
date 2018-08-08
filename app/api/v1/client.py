@@ -1,9 +1,11 @@
 from flask import request
 
 from app.libs.enums import ClientTypeEnum
+from app.libs.error_code import ClientTypeError
 from app.libs.redprint import Redprint
 from app.models.user import User
 from app.validators.forms import ClientForm, UserEmailForm
+from werkzeug.exceptions import HTTPException
 
 api = Redprint('client')
 
@@ -17,7 +19,8 @@ def create_client():
             ClientTypeEnum.USER_EMAIL: __register_user_by_email
         }
         promise[form.type.data]()
-
+    else:
+        raise ClientTypeError
     return 'success'
 
 

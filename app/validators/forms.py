@@ -21,7 +21,7 @@ class ClientForm(Form):
 class UserEmailForm(ClientForm):
     account = StringField(validators=[Email(message='invalidate email')])
     secret = StringField(validators=[DataRequired(),
-                                     Regexp(r'^[A-Za-Z0-9_*&$#@]{6,22}$')])
+                                     Regexp(r'^[A-Za-z0-9_*&$#@]{6,22}$')])
     nickname = StringField(validators=[DataRequired(),
                                        length(min=2, max=22)])
 

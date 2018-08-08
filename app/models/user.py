@@ -26,5 +26,5 @@ class User(Base):
             user.nickname = nickname
             user.email = account
             user.password = secret
-            db.session.add(User)
+            db.session.add(user)
 

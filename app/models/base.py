@@ -11,7 +11,7 @@ class SQLAlchemy(_SQLAlchemy):
             yield
             self.session.commit()
         except Exception as e:
-            db.session.commit()
+            self.session.rollback()
             raise e
 
 
@@ -20,9 +20,6 @@ class Query(BaseQuery):
         if 'status' not in kwargs.keys():
             kwargs['status'] = 1
         return super(Query, self).filter_by(**kwargs)
-
-
-db = SQLAlchemy(query_class=Query)
 
 
 db = SQLAlchemy(query_class=Query)
