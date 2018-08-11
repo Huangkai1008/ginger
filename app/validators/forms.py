@@ -20,6 +20,9 @@ class ClientForm(Form):
 
 
 class UserEmailForm(ClientForm):
+    """
+    用户使用邮箱注册表单
+    """
     account = StringField(validators=[Email(message='invalidate email')])
     secret = StringField(validators=[DataRequired(),
                                      Regexp(r'^[A-Za-z0-9_*&$#@]{6,22}$')])
