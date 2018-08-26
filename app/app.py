@@ -1,4 +1,21 @@
-from flask import Flask
+from flask import Flask as _Flask
+
+from flask.json import JSONEncoder as _JSONEncoder
+
+
+class JSONEncoder(_JSONEncoder):
+    """
+    自定义JSONEncoder
+    """
+    def default(self, o):
+        return o.__dict__
+
+
+class Flask(_Flask):
+    """
+    改变flask的json_encoder
+    """
+    json_encoder = JSONEncoder
 
 
 def register_blueprints(app):
