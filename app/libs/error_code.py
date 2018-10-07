@@ -1,5 +1,3 @@
-from werkzeug.exceptions import HTTPException
-
 from app.libs.error import APIException
 
 
@@ -7,6 +5,11 @@ class Success(APIException):
     code = 201
     msg = 'ok'
     error_code = 0
+
+
+class DeleteSuccess(Success):
+    code = 202
+    error_code = 1
 
 
 class ServerError(APIException):
@@ -37,3 +40,9 @@ class AuthFailed(APIException):
     code = 401
     msg = 'authorization failed'
     error_code = 1005
+
+
+class Forbidden(APIException):
+    code = 403
+    msg = 'forbidden, not in scope'
+    error_code = 1004

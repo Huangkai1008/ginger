@@ -32,7 +32,7 @@ def get_token():
     expiration = current_app.config['TOKEN_EXPIRATION']
     token = generate_auth_token(identity['uid'],
                                 form.type.data,
-                                identity.get('scope', None),
+                                identity['scope'],
                                 expiration)
     # Token
     t = {
@@ -41,7 +41,7 @@ def get_token():
     return jsonify(t), 201
 
 
-def generate_auth_token(uid, ac_type, scope=None, expiration=7200):
+def generate_auth_token(uid, ac_type, is_admin=None, expiration=7200):
     """
     生成令牌
     :param uid: 客户id
@@ -55,7 +55,7 @@ def generate_auth_token(uid, ac_type, scope=None, expiration=7200):
     return s.dumps({
         'uid': uid,
         'type': ac_type.value,
-        'scope': scope
+        'scope': is_admin
     })
 
 
